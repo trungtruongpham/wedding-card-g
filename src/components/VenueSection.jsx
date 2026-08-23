@@ -35,19 +35,19 @@ function FamilyAddress({ family, side, title }) {
         {title}
       </h3>
       <div className="mx-3 flex min-h-0 flex-1 flex-col items-center border-s-2 border-burgundy/80 px-4 pb-1 pt-5 text-center md:mx-5 md:px-5">
-        <p className="font-normal text-base text-burgundy/80 md:text-lg">
+        <p className="font-formal text-base text-burgundy/80 md:text-lg">
           {family.weeddingTime}
         </p>
-        <p className="font-normal text-base text-burgundy/80 md:text-lg">
+        <p className="font-formal text-base text-burgundy/80 md:text-lg">
           {family.weddingDay}
         </p>
-        <p className="font-normal text-base text-burgundy/80 md:text-lg">
+        <p className="font-formal text-base text-burgundy/80 md:text-lg">
           {family.lunarWeddingDay}
         </p>
-        <p className="font-normal text-base text-burgundy/80 md:text-lg">
+        <p className="font-formal text-base text-burgundy/80 md:text-lg">
           Tại tư gia {side}
         </p>
-        <address className="mt-auto flex h-45 w-full shrink-0 items-center justify-center bg-burgundy px-3 py-3 font-formal text-base not-italic leading-snug text-parchment shadow-[3px_5px_12px_rgb(81_20_25/0.18)] [overflow-wrap:anywhere] md:text-lg">
+        <address className="mt-auto flex h-40 w-full shrink-0 items-center justify-center bg-burgundy px-3 py-3 font-formal text-base not-italic leading-snug text-parchment shadow-[3px_5px_12px_rgb(81_20_25/0.18)] [overflow-wrap:anywhere] md:text-lg">
           {family.address}
         </address>
       </div>

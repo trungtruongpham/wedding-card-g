@@ -57,7 +57,7 @@ export default function HeroSection() {
       <div className="relative z-10 mt-16 flex flex-col items-center gap-[22px] md:mt-20">
         <h1 className="contents">
           <span className="font-display text-[clamp(38px,11vw,46px)] leading-none md:text-[58px]">
-            {groom.shortName}
+            Văn Tuấn
           </span>
           <span
             aria-hidden="true"
@@ -66,7 +66,7 @@ export default function HeroSection() {
             &amp;
           </span>
           <span className="font-display text-[clamp(38px,11vw,46px)] leading-none md:text-[58px]">
-            {bride.shortName}
+            Hương Giang
           </span>
         </h1>
       </div>

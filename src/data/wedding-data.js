@@ -23,7 +23,7 @@ export const weddingData = {
     {
       label: "Ông Bà",
       parents: ["Lê Xuân Trường", "Trần Thị An"],
-      address: "Số 4/75 An Phong, TP Nam Định, Tỉnh Ninh Bình",
+      address: "Số 4/75 An Phong, Phường Nam Định, Tỉnh Ninh Bình",
       weeddingTime: "10:00 - Chủ Nhật",
       weddingDay: "20/09/2026",
       lunarWeddingDay: "Tức 10/08 Âm lịch",
@@ -156,6 +156,6 @@ export const weddingData = {
   ],
   music: {
     title: "Em đồng ý (I do)",
-    url: "https://cdn.chungdoi.com/music/em-dong-y-i-do.mp3",
+    url: "https://cdn.chungdoi.com/music/vay-cuoi.mp3",
   },
 };

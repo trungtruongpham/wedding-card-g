@@ -8,11 +8,11 @@ import VenueSection from "./VenueSection";
 function Family({ family }) {
   return (
     <div className="grid min-w-0 justify-items-center gap-0.5">
-      <span className="text-xs text-parchment/70">{family.label}</span>
+      <span className="text-sm text-parchment/70">{family.label}</span>
       {family.parents.map((parent) => (
         <strong
           key={parent}
-          className="text-[13px] font-semibold [overflow-wrap:anywhere]"
+          className="text-[17px] font-semibold [overflow-wrap:anywhere]"
         >
           {parent}
         </strong>
@@ -35,7 +35,9 @@ export default function CeremonySection() {
       <FlowerDecoration className="bottom-[44%]" />
       <InvitationCard className="pb-10 pt-9">
         <SectionHeading light>
-          <span id="ceremony-heading">Thông tin lễ cưới</span>
+          <span id="ceremony-heading" className="text-2xl">
+            Thông tin lễ cưới
+          </span>
         </SectionHeading>
 
         <div className="grid w-full grid-cols-[1fr_auto_1fr] items-center gap-x-5 font-invitation md:gap-x-8">
