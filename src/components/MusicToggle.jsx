@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { weddingData } from "../data/wedding-data";
 import mp3file from "../components/vay-cuoi.mp3";
 
@@ -7,20 +7,69 @@ export default function MusicToggle() {
   const [playing, setPlaying] = useState(false);
   const [failed, setFailed] = useState(false);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return undefined;
+
+    let disposed = false;
+
+    const removeInteractionListeners = () => {
+      document.removeEventListener("pointerdown", resumeOnInteraction);
+      document.removeEventListener("keydown", resumeOnInteraction);
+    };
+
+    const startPlayback = async () => {
+      if (disposed || audio.error) return;
+
+      if (!audio.paused) {
+        removeInteractionListeners();
+        return;
+      }
+
+      try {
+        await audio.play();
+        removeInteractionListeners();
+      } catch {
+        // Audible autoplay may be blocked until the visitor interacts with the page.
+      }
+    };
+
+    function resumeOnInteraction(event) {
+      if (
+        event.target instanceof Element &&
+        event.target.closest("[data-music-toggle]")
+      ) {
+        return;
+      }
+
+      void startPlayback();
+    }
+
+    document.addEventListener("pointerdown", resumeOnInteraction);
+    document.addEventListener("keydown", resumeOnInteraction);
+    void startPlayback();
+
+    return () => {
+      disposed = true;
+      removeInteractionListeners();
+    };
+  }, []);
+
   const togglePlayback = async () => {
-    if (!audioRef.current || failed) return;
+    const audio = audioRef.current;
+    if (!audio || failed) return;
 
     if (playing) {
-      audioRef.current.pause();
+      audio.pause();
       setPlaying(false);
       return;
     }
 
     try {
-      await audioRef.current.play();
+      await audio.play();
       setPlaying(true);
     } catch {
-      setFailed(true);
+      setFailed(Boolean(audio.error));
       setPlaying(false);
     }
   };
@@ -30,8 +79,9 @@ export default function MusicToggle() {
       <audio
         ref={audioRef}
         src={mp3file}
+        autoPlay
         loop
-        preload="none"
+        preload="auto"
         onPause={() => setPlaying(false)}
         onPlay={() => setPlaying(true)}
         onError={() => setFailed(true)}
@@ -39,6 +89,7 @@ export default function MusicToggle() {
       <button
         type="button"
         onClick={togglePlayback}
+        data-music-toggle
         disabled={failed}
         aria-pressed={playing}
         className="fixed bottom-4 right-4 z-40 grid size-12 cursor-pointer place-items-center rounded-full bg-burgundy text-white shadow-[0_8px_24px_rgb(81_20_25/0.34)] transition-transform duration-200 hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-45 sm:bottom-6 sm:right-6"
