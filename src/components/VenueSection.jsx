@@ -44,7 +44,7 @@ function FamilyAddress({ family, side, title }) {
         <p className="font-formal text-base text-burgundy/80 md:text-lg">
           {family.lunarWeddingDay}
         </p>
-        <p className="font-formal text-base text-burgundy/80 md:text-lg">
+        <p className="font-formal text-base text-burgundy/80 md:text-lg mb-5">
           Tại tư gia {side}
         </p>
         <address className="mt-auto flex h-40 w-full shrink-0 items-center justify-center bg-burgundy px-3 py-3 font-formal text-base not-italic leading-snug text-parchment shadow-[3px_5px_12px_rgb(81_20_25/0.18)] [overflow-wrap:anywhere] md:text-lg">
